@@ -16,35 +16,25 @@
     <p class="lead">This is a simple web application to view, update, and add movies to a database.</p>
   </div>
 
-<div id="response">
-    <pre></pre>
-</div>
 
-
-
-<table class="table table-warning">
+<button type="button" onclick="getAllMovies()" class="btn btn-outline-danger">Press to get movies!</button>
+<br>
+<br>
+<table class="table table-danger">
     <thead>
       <tr>
-        <th scope="col">Movie Listings</th>
-        <th scope="col">Title</th>
-        <th scope="col">Genre</th>
-        <th scope="col">Director's Name</th>
+        <th>Title</th>
+        <th>Genre</th>
+        <th>Director's Name</th>
       </tr>
     </thead>
-    <tbody>
-      
-      <tr class="table-success">
-        <th scope="row"></th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-      </tr>
+    <tbody class ="table table-success" id="movieTableBody">
     </tbody>
   </table> 
   <br>  
 
   <div style="display: flex;">
-    <form>            
+    <form id = "add-form">            
         <h2><p style = "font-family:LEIXO DEMO;">
         Edit Movie In Database:
      </p></h2>
@@ -72,7 +62,7 @@
     <input type="text" name="genre" placeholder="Genre" />
 
 
-    <button type="submit">Submit</button>
+    <button type="submit" class="btn btn-outline-danger">Submit</button>
 </form>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
