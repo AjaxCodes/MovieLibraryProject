@@ -77,3 +77,25 @@ function makeMovieObject(){
     };
     return movieData;
 }
+
+function addDataToEditTable(data) {
+    //We may need to add functionality to clear table here
+    for(let i = 0; i < data.length; i++){
+        $("#movieedittable").append(`
+        <tr><td>${data[i].title}</td>
+        <td>${data[i].genre}</td>
+        <td>${data[i].director}</td></tr>`)
+    }
+}
+
+function getSingleMovie(movieId){
+    $(document).ready(function(){
+        $.ajax({
+            type: 'GET',
+            url: 'https://localhost:44325/api/movie' + movieId,
+            contentType: 'application/json'
+        }).then(function(data){
+            //Where do we want to dispay this data? (new table??)
+        })
+    })
+}
