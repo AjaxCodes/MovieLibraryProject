@@ -88,7 +88,7 @@ function getSingleMovie(movieId){
             url: 'https://localhost:44325/api/movie/' + movieId,
             dataType: 'json'
         }).then(function(data){
-
+            $('#hiddenMovieId').val(data['movieId'])
             $('#editTitle').val(data['title']).text()
             $('#editGenre').val(data['genre']).text()
             $('#editDirector').val(data['director']).text()
@@ -97,16 +97,18 @@ function getSingleMovie(movieId){
 }
 
 function updateMovie() {
-    //Will display data from getSingleMovie in a form,
-        //Then allow user to make updates
-    //Will take data from EDIT form
-    var data = makeMovieObject();
+    var movieToUpdate = {
+        "MovieId": parseInt(document.getElementById('hiddenMovieId').value),
+        "Title": document.getElementById('editTitle').value,
+        "Genre": document.getElementById('editGenre').value,
+        "Director": document.getElementById('editDirector').value
+    };
     $(document).ready(function() {
         $.ajax({
             url: 'https://localhost:44325/api/movie',
             type: 'Put',
             contentType: 'application/json',
-            data: JSON.stringify(data),
+            data: JSON.stringify(movieToUpdate),
             }).then(function() {
                 getAllMovies();
             });

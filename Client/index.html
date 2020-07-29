@@ -58,6 +58,9 @@
         <h2><p style = "font-family:LEIXO DEMO;">
         Edit Movie In Database:
      </p></h2>
+     <div class="form-group">
+        <input id="hiddenMovieId" name="hiddenMovieId" type="hidden"/>
+     </div>
     <div class="form-group">
         <label class="col-form-label" for="editTitle">Movie Title</label>
         <input class="form-control form-control-lg" type="text" placeholder="Movie Title" id="editTitle">
@@ -70,7 +73,7 @@
         <label class="col-form-label" for="editDirector">Movie Director</label>
         <input class="form-control form-control-lg" type="text" placeholder="Movie Director" id="editDirector">
     </div></div>
-  <button type="button" class="btn btn-outline-danger">Update this Movie in Database</button>
+  <button type="button" class="btn btn-outline-danger"onclick="updateMovie()">Update this Movie in Database</button>
 </form>
    </div>
 
