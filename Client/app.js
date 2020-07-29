@@ -51,7 +51,9 @@ function addDataToTable(data) {
         $("#movieTableBody").append(`
         <tr><td>${data[i].title}</td>
         <td>${data[i].genre}</td>
-        <td>${data[i].director}</td></tr>`)
+        <td>${data[i].director}</td>
+        <td><button type="submit" class="btn btn-outline-danger"onclick="getSingleMovie(${data[i].movieId})">Edit this Movie</button></tr>
+        </tr>`)
     }
 }
 
@@ -78,24 +80,35 @@ function makeMovieObject(){
     return movieData;
 }
 
-function addDataToEditTable(data) {
-    //We may need to add functionality to clear table here
-    for(let i = 0; i < data.length; i++){
-        $("#movieedittable").append(`
-        <tr><td>${data[i].title}</td>
-        <td>${data[i].genre}</td>
-        <td>${data[i].director}</td></tr>`)
-    }
-}
 
 function getSingleMovie(movieId){
     $(document).ready(function(){
         $.ajax({
             type: 'GET',
-            url: 'https://localhost:44325/api/movie' + movieId,
-            contentType: 'application/json'
+            url: 'https://localhost:44325/api/movie/' + movieId,
+            dataType: 'json'
         }).then(function(data){
-            //Where do we want to dispay this data? (new table??)
-        })
+
+            $('#editTitle').val(data['title']).text()
+            $('#editGenre').val(data['genre']).text()
+            $('#editDirector').val(data['director']).text()
     })
+})
+}
+
+function updateMovie() {
+    //Will display data from getSingleMovie in a form,
+        //Then allow user to make updates
+    //Will take data from EDIT form
+    var data = makeMovieObject();
+    $(document).ready(function() {
+        $.ajax({
+            url: 'https://localhost:44325/api/movie',
+            type: 'Put',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            }).then(function() {
+                getAllMovies();
+            });
+    });
 }
