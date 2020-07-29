@@ -34,7 +34,7 @@ namespace WebAPISample.Controllers
         {
             // Retrieve movie by id from db logic
             // return Ok(movie);
-            var selectedMovie = _context.Movies.Where(s => s.MovieId == id).ToList();
+            var selectedMovie = _context.Movies.Where(s => s.MovieId == id).SingleOrDefault();
             if (selectedMovie == null)
             {
                 return NotFound();

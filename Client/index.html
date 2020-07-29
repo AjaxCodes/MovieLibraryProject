@@ -36,16 +36,35 @@
   <div style="display: flex;">
     <form id = "add-form">            
         <h2><p style = "font-family:LEIXO DEMO;">
+        Add Movie To Database:
+     </p></h2>
+    <div class="form-group">
+        <input class="form-control form-control-lg" type="text" placeholder="Movie Title" id="newTitle">
+    </div>
+    <div class="form-group">
+        <input class="form-control form-control-lg" type="text" placeholder="Movie Genre" id="newGenre">
+    </div>
+    <div class="form-group">
+        <input class="form-control form-control-lg" type="text" placeholder="Movie Director" id="newDirector">
+    </div></div>
+  <button type="button" class="btn btn-outline-danger" onclick="createMovie()">Add Movie to Database</button>
+</form>
+   </div>
+ 
+
+  <div style="display: flex;">
+    <form id = "add-form">            
+        <h2><p style = "font-family:LEIXO DEMO;">
         Edit Movie In Database:
      </p></h2>
     <div class="form-group">
-        <input class="form-control form-control-lg" type="text" placeholder="Movie Title" id="inputLarge">
+        <input class="form-control form-control-lg" type="text" placeholder="Movie Title" id="movieTitle">
     </div>
     <div class="form-group">
-        <input class="form-control form-control-lg" type="text" placeholder="Movie Genre" id="inputLarge">
+        <input class="form-control form-control-lg" type="text" placeholder="Movie Genre" id="movieGenre">
     </div>
     <div class="form-group">
-        <input class="form-control form-control-lg" type="text" placeholder="Movie Director" id="inputLarge">
+        <input class="form-control form-control-lg" type="text" placeholder="Movie Director" id="movieDirector">
     </div></div>
   <button type="button" class="btn btn-outline-danger">Add Movie to Database</button>
 </form>

@@ -23,26 +23,27 @@
     }
 $(document).ready(function() {
     $('#add-form').submit( processForm );
-    $("#titleInputBox").keyup(function ()  {
 
-    })
-}//event listener sin document on ready or (Jquery{})
- );
-(jQuery);
+    });
+
+
+//event listener sin document on ready or (Jquery{});
+(jQuery);  
 
 function getAllMovies() {
+ $(document).ready(function() {
     $.ajax({
+        type: 'GET',
         url: 'https://localhost:44325/api/movie',
-        type: 'get',
-        contentType: "application/json",
-        success: function(data, textStatus, jQxhr){
+        dataType: 'json',
+        success: function(){
             $(`#movieTableBody`).html(``);
-            addDataToTable(data);
-        },
-        error: function (errrThrown, textStatus, jQxhr) {
-            console.log(`Error has occurred.  Error: ${errorThrown}`)
         }
+    }).then(function(data) {
+        addDataToTable(data);
+    
     })
+ })
 }
 
 function addDataToTable(data) {
@@ -54,3 +55,25 @@ function addDataToTable(data) {
     }
 }
 
+function createMovie() {
+    var data = makeMovieObject();
+    $(document).ready(function() {
+        $.ajax({
+            url: 'https://localhost:44325/api/movie',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            }).then(function() {
+                getAllMovies();
+            });
+    });
+}
+
+function makeMovieObject(){
+    var movieData = {
+        "Title": document.getElementById('newTitle').value,
+        "Genre": document.getElementById('newGenre').value,
+        "Director": document.getElementById('newDirector').value
+    };
+    return movieData;
+}
