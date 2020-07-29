@@ -2,16 +2,68 @@
 <html>
 
 <head>
-    <title>jQuery AJAX POST Form</title>
+    <title>The Mega Movie Database</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/solar/bootstrap.css"/>
 </head>
 <body>
 
+
+ <div class="jumbotron">
+    <h1 class="display-3"><p style = "font-family:LEIXO DEMO;">
+        The Mega Movie Database
+     </p></h1>
+    <p class="lead">This is a simple web application to view, update, and add movies to a database.</p>
+  </div>
+
 <div id="response">
     <pre></pre>
 </div>
+
+
+
+<table class="table table-warning">
+    <thead>
+      <tr>
+        <th scope="col">Movie Listings</th>
+        <th scope="col">Title</th>
+        <th scope="col">Genre</th>
+        <th scope="col">Director's Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr class="table-success">
+        <th scope="row"></th>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+    </tbody>
+  </table> 
+  <br>  
+
+  <div style="display: flex;">
+    <form>            
+        <h2><p style = "font-family:LEIXO DEMO;">
+        Edit Movie In Database:
+     </p></h2>
+    <div class="form-group">
+        <input class="form-control form-control-lg" type="text" placeholder="Movie Title" id="inputLarge">
+    </div>
+    <div class="form-group">
+        <input class="form-control form-control-lg" type="text" placeholder="Movie Genre" id="inputLarge">
+    </div>
+    <div class="form-group">
+        <input class="form-control form-control-lg" type="text" placeholder="Movie Director" id="inputLarge">
+    </div></div>
+  <button type="button" class="btn btn-outline-danger">Add Movie to Database</button>
+</form>
+   </div>
+
+ 
+<br>
+<br>  
 
 
 <form id="my-form">
