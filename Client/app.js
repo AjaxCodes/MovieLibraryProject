@@ -1,35 +1,4 @@
- function processForm( e ){
-        var dict = {
-            Title : this["title"].value,
-            Genre : this["genre"].value,
-        	Director: this["director"].value
-        };
-
-        $.ajax({
-            url: 'https://localhost:44325/api/movie',
-            dataType: 'json',
-            type: 'post',
-            contentType: 'application/json',
-            data: JSON.stringify(dict),
-            success: function( data, textStatus, jQxhr ){
-                $('#response pre').html( data );
-            },
-            error: function( jqXhr, textStatus, errorThrown ){
-                console.log( errorThrown );
-            }
-        });
-
-        e.preventDefault();
-    }
-$(document).ready(function() {
-    $('#add-form').submit( processForm );
-
-    });
-
-
-//event listener sin document on ready or (Jquery{});
-(jQuery);  
-
+//event listener in document on ready or (Jquery{});
 function getAllMovies() {
  $(document).ready(function() {
     $.ajax({
@@ -52,7 +21,7 @@ function addDataToTable(data) {
         <tr><td>${data[i].title}</td>
         <td>${data[i].genre}</td>
         <td>${data[i].director}</td>
-        <td><button type="submit" class="btn btn-outline-danger"onclick="getSingleMovie(${data[i].movieId})">Edit this Movie</button></tr>
+        <td><button type="submit" class="btn btn-outline-danger"onclick="getSingleMovie(${data[i].movieId})">Edit</button></tr>
         </tr>`)
     }
 }
@@ -65,6 +34,10 @@ function createMovie() {
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(data),
+            success: function(){
+                alert("Successfully added movie!");
+                $(document.getElementById('add-form').reset());
+            }
             }).then(function() {
                 getAllMovies();
             });
@@ -75,8 +48,13 @@ function makeMovieObject(){
     var movieData = {
         "Title": document.getElementById('newTitle').value,
         "Genre": document.getElementById('newGenre').value,
-        "Director": document.getElementById('newDirector').value
+        "Director": document.getElementById('newDirector').value,
+        "ImgPath": document.getElementById('newImg').value
     };
+    if (movieData.ImgPath == null)
+    {
+        movieData.ImgPath = "";
+    }
     return movieData;
 }
 
@@ -91,7 +69,8 @@ function getSingleMovie(movieId){
             $('#hiddenMovieId').val(data['movieId'])
             $('#editTitle').val(data['title']).text()
             $('#editGenre').val(data['genre']).text()
-            $('#editDirector').val(data['director']).text()
+            $('#editDirector').val(data['director']).text(),
+            $('#editImg').val(data['imgPath']).text()
     })
 })
 }
@@ -101,7 +80,8 @@ function updateMovie() {
         "MovieId": parseInt(document.getElementById('hiddenMovieId').value),
         "Title": document.getElementById('editTitle').value,
         "Genre": document.getElementById('editGenre').value,
-        "Director": document.getElementById('editDirector').value
+        "Director": document.getElementById('editDirector').value,
+        "ImgPath": document.getElementById('editImg').value
     };
     $(document).ready(function() {
         $.ajax({
@@ -109,6 +89,10 @@ function updateMovie() {
             type: 'Put',
             contentType: 'application/json',
             data: JSON.stringify(movieToUpdate),
+            success: function(){
+                alert("Successfully updated movie!");
+                $(document.getElementById('edit-form').reset());
+            }
             }).then(function() {
                 getAllMovies();
             });

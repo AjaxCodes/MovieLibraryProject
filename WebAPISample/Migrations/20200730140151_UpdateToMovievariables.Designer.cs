@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebAPISample.Data;
 
 namespace WebAPISample.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20200730140151_UpdateToMovievariables")]
+    partial class UpdateToMovievariables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,7 +52,6 @@ namespace WebAPISample.Migrations
                             MovieId = 1,
                             Director = "Martin Scorsese",
                             Genre = "Drama",
-                            ImgPath = "",
                             Title = "The Departed"
                         },
                         new
@@ -58,7 +59,6 @@ namespace WebAPISample.Migrations
                             MovieId = 2,
                             Director = "Christopher Nolan",
                             Genre = "Drama",
-                            ImgPath = "",
                             Title = "The Dark Knight"
                         },
                         new
@@ -66,7 +66,6 @@ namespace WebAPISample.Migrations
                             MovieId = 3,
                             Director = "Christopher Nolan",
                             Genre = "Drama",
-                            ImgPath = "",
                             Title = "Inception"
                         },
                         new
@@ -74,7 +73,6 @@ namespace WebAPISample.Migrations
                             MovieId = 4,
                             Director = "David Gordon Green",
                             Genre = "Comedy",
-                            ImgPath = "",
                             Title = "Pineapple Express"
                         },
                         new
@@ -82,7 +80,6 @@ namespace WebAPISample.Migrations
                             MovieId = 5,
                             Director = "John McTiernan",
                             Genre = "Action",
-                            ImgPath = "",
                             Title = "Die Hard"
                         });
                 });

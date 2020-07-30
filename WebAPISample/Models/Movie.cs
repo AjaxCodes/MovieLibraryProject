@@ -20,5 +20,7 @@ namespace WebAPISample.Models
 
         [Required(ErrorMessage = "Director is required")]
         public string Director { get; set; }
+        public string ImgPath { get; set; }
     }
+
 }

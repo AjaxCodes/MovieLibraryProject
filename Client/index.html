@@ -26,7 +26,7 @@
         <th>Title</th>
         <th>Genre</th>
         <th>Director's Name</th>
-        <th></th>
+        <th>Click to Edit Movie (see form below)</th>
       </tr>
     </thead>
     <tbody class ="table table-success" id="movieTableBody">
@@ -34,27 +34,31 @@
   </table> 
   <br>  
 
-  <div style="display: flex;">
-    <form id = "add-form">            
+    <form style ='float: left; padding: 60px' id = "add-form">            
         <h2><p style = "font-family:LEIXO DEMO;">
         Add Movie To Database:
      </p></h2>
     <div class="form-group">
+      <label class="col-form-label" for="newTitle">Enter Movie Title:</label>
         <input class="form-control form-control-lg" type="text" placeholder="Movie Title" id="newTitle">
     </div>
     <div class="form-group">
+      <label class="col-form-label" for="newGenre">Enter Movie Genre:</label>
         <input class="form-control form-control-lg" type="text" placeholder="Movie Genre" id="newGenre">
     </div>
     <div class="form-group">
+      <label class="col-form-label" for="newDirector">Enter Movie Director:</label>
         <input class="form-control form-control-lg" type="text" placeholder="Movie Director" id="newDirector">
-    </div></div>
+    </div> 
+    <div class="form-group">
+      <label class="col-form-label" for="newImg">Enter Movie Image URL:</label>
+      <input class="form-control form-control-lg" type="text" placeholder="Enter the URL of Movie Image" id="newImg">
+  </div>
   <button type="button" class="btn btn-outline-danger" onclick="createMovie()">Add Movie to Database</button>
 </form>
-   </div>
  
 
-  <div style="display: flex;">
-    <form id = "add-form">            
+  <form id = "edit-form" style ='float: right; padding: 60px'>            
         <h2><p style = "font-family:LEIXO DEMO;">
         Edit Movie In Database:
      </p></h2>
@@ -62,34 +66,26 @@
         <input id="hiddenMovieId" name="hiddenMovieId" type="hidden"/>
      </div>
     <div class="form-group">
-        <label class="col-form-label" for="editTitle">Movie Title</label>
+        <label class="col-form-label" for="editTitle">Edit Movie Title:</label>
         <input class="form-control form-control-lg" type="text" placeholder="Movie Title" id="editTitle">
     </div>
     <div class="form-group">
-        <label class="col-form-label" for="editGenre">Movie Genre</label>
+        <label class="col-form-label" for="editGenre">Edit Movie Genre:</label>
         <input class="form-control form-control-lg" type="text" placeholder="Movie Genre" id="editGenre">
     </div>
     <div class="form-group">
-        <label class="col-form-label" for="editDirector">Movie Director</label>
+        <label class="col-form-label" for="editDirector">Edit Movie Director:</label>
         <input class="form-control form-control-lg" type="text" placeholder="Movie Director" id="editDirector">
-    </div></div>
-  <button type="button" class="btn btn-outline-danger"onclick="updateMovie()">Update this Movie in Database</button>
+    </div>
+    <div class="form-group">
+      <label class="col-form-label" for="editImg">Edit Movie Image URL:</label>
+      <input class="form-control form-control-lg" type="text" placeholder="Image URL" id="editImg">
+  </div>
+  <button type="button" class="btn btn-outline-danger"onclick="updateMovie()">Update this Movie in Database:</button>
 </form>
-   </div>
-
  
 <br>
 <br>  
-
-
-<form id="my-form">
-    <input type="text" name="title" placeholder="Title" />
-    <input type="text" name="director" placeholder="Director" />
-    <input type="text" name="genre" placeholder="Genre" />
-
-
-    <button type="submit" class="btn btn-outline-danger">Submit</button>
-</form>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="./app.js"></script>
