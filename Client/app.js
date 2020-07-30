@@ -21,7 +21,8 @@ function addDataToTable(data) {
         <tr><td>${data[i].title}</td>
         <td>${data[i].genre}</td>
         <td>${data[i].director}</td>
-        <td><button type="submit" class="btn btn-outline-danger"onclick="getSingleMovie(${data[i].movieId})">Edit</button></tr>
+        <td><button type="submit" class="btn btn-outline-danger"onclick="editSingleMovie(${data[i].movieId})">Edit</button>
+        <td><button type="submit" class="btn btn-outline-danger"onclick="getMovieDetails(${data[i].movieId})">Details</button></tr>
         </tr>`)
     }
 }
@@ -59,18 +60,39 @@ function makeMovieObject(){
 }
 
 
-function getSingleMovie(movieId){
+function editSingleMovie(movieId){
     $(document).ready(function(){
         $.ajax({
             type: 'GET',
             url: 'https://localhost:44325/api/movie/' + movieId,
             dataType: 'json'
         }).then(function(data){
+
             $('#hiddenMovieId').val(data['movieId'])
             $('#editTitle').val(data['title']).text()
             $('#editGenre').val(data['genre']).text()
-            $('#editDirector').val(data['director']).text(),
+            $('#editDirector').val(data['director']).text()
             $('#editImg').val(data['imgPath']).text()
+    })
+})
+}
+
+function getMovieDetails(movieId){
+    $(document).ready(function(){
+        $.ajax({
+            type: 'GET',
+            url: 'https://localhost:44325/api/movie/' + movieId,
+            dataType: 'json'
+        }).then(function(data){
+            var movieImage = document.getElementById('movieImg');
+            var movieTitle = document.getElementById('movieTitle');
+            var movieDirector = document.getElementById('movieDirector');
+            var movieGenre = document.getElementById('movieGenre');
+
+            movieImage.src = data['imgPath'];
+            movieTitle.innerText = data['title'];
+            movieDirector.innerText = data['director'];
+            movieGenre.innerText = data['genre'];
     })
 })
 }
